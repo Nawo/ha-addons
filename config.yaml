@@ -1,0 +1,31 @@
+name: "EasyWallbox Controller"
+version: "1.0.0"
+slug: "easywallbox_controller"
+description: "Kontroler EasyWallbox (Forked version)"
+url: "https://github.com/Nawo/easywallbox"
+arch:
+  - aarch64
+  - amd64
+startup: application
+boot: auto
+privileged: true
+host_network: true
+host_ipc: true
+map:
+  - /var/run/dbus:/var/run/dbus:rw
+
+options:
+  mqtt_host: "core-mosquitto"
+  mqtt_port: 1883
+  mqtt_user: ""
+  mqtt_password: ""
+  wallbox_mac: ""
+  wallbox_pin: "0000"
+
+schema:
+  mqtt_host: str
+  mqtt_port: int
+  mqtt_user: str
+  mqtt_password: password
+  wallbox_mac: str
+  wallbox_pin: str
