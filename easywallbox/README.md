@@ -1,1 +1,1 @@
-# ha-addons
+# free2move easywallbox integration

@@ -14,4 +14,7 @@ echo "Broker MQTT: $MQTT_HOST"
 
 echo "Starting EasyWallbox..."
 cd /app
+
+git pull
+
 python3 easywallbox.py

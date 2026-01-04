@@ -2,7 +2,7 @@ name: "EasyWallbox Controller"
 version: "1.0.0"
 slug: "easywallbox_controller"
 description: "Sterownik EasyWallbox po Bluetooth (Fork)"
-url: "https://github.com/Nawo/easywallbox-ha-addons"
+url: "https://github.com/Nawo/easywallbox"
 arch:
   - aarch64
   - amd64
