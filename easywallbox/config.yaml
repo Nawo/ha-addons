@@ -1,7 +1,7 @@
 name: "EasyWallbox Controller"
 version: "1.0.0"
 slug: "easywallbox_controller"
-description: "Sterownik EasyWallbox po Bluetooth (Fork)"
+description: "Integracja free2move easywallbox z Home Assistant"
 url: "https://github.com/Nawo/easywallbox"
 arch:
   - aarch64
