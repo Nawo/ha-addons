@@ -9,7 +9,6 @@ arch:
 startup: application
 boot: auto
 
-privileged: true
 host_network: true
 host_dbus: true
 
