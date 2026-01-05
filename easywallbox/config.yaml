@@ -1,5 +1,5 @@
 name: "EasyWallbox Controller"
-version: "1.0.0"
+version: "1.0.1"
 slug: "easywallbox_controller"
 description: "Integracja free2move easywallbox z Home Assistant"
 url: "https://github.com/Nawo/easywallbox"
@@ -27,3 +27,8 @@ schema:
   mqtt_password: password
   wallbox_mac: str
   wallbox_pin: str
+
+panel_icon: "mdi:ev-station"
+panel_title: "EasyWallbox"
+ingress: true
+ingress_port: 8080 
