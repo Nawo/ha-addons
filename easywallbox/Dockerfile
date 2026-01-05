@@ -5,6 +5,8 @@ RUN apk add --no-cache git bluez python3 py3-pip jq
 
 WORKDIR /app
 
+ARG CACHEBUST=1
+
 RUN git clone https://github.com/Nawo/easywallbox.git .
 
 RUN pip install -r requirements.txt --break-system-packages
