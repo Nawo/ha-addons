@@ -13,5 +13,6 @@ export WALLBOX_PIN=$(bashio::config 'wallbox_pin')
 export MQTT_TOPIC_PREFIX="easywallbox"
 
 echo "Zmienne ustawione. Uruchamiam skrypt..."
-
+cd /app
+git pull
 python3 easywallbox.py
