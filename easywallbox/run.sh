@@ -29,4 +29,5 @@ fi
 
 echo "Uruchamiam skrypt..."
 cd /app
+git pull
 python3 easywallbox.py
