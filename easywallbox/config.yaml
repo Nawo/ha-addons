@@ -6,7 +6,10 @@ url: "https://github.com/Nawo/easywallbox"
 arch:
   - aarch64
   - amd64
-startup: application
+  - armhf
+  - armv7
+  - i386
+startup: services
 boot: auto
 
 host_network: true

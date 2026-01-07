@@ -1,24 +1,17 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bashio
 
-echo "--- Uruchamianie EasyWallbox Controller ---"
+echo "Uruchamianie EasyWallbox Controller (ENV Mode)..."
 
-CONFIG_PATH=/data/options.json
+export MQTT_HOST=$(bashio::config 'mqtt_host')
+export MQTT_PORT=$(bashio::config 'mqtt_port')
+export MQTT_USER=$(bashio::config 'mqtt_user')
+export MQTT_PASSWORD=$(bashio::config 'mqtt_password')
 
-export MQTT_HOST=$(jq --raw-output '.mqtt_host' $CONFIG_PATH)
-export MQTT_PORT=$(jq --raw-output '.mqtt_port' $CONFIG_PATH)
-export MQTT_USERNAME=$(jq --raw-output '.mqtt_user' $CONFIG_PATH)
-export MQTT_PASSWORD=$(jq --raw-output '.mqtt_password' $CONFIG_PATH)
-export WALLBOX_ADDRESS=$(jq --raw-output '.wallbox_mac' $CONFIG_PATH)
-export WALLBOX_PIN=$(jq --raw-output '.wallbox_pin' $CONFIG_PATH)
+export WALLBOX_MAC_ADDRESS=$(bashio::config 'wallbox_mac')
+export WALLBOX_PIN=$(bashio::config 'wallbox_pin')
 
-echo "Konfiguracja załadowana:"
-echo "Wallbox address: $WALLBOX_ADDRESS"
-echo "Broker MQTT: $MQTT_HOST"
+export MQTT_TOPIC_PREFIX="easywallbox"
 
-echo "Przechodzę do katalogu aplikacji..."
-cd /app
+echo "Zmienne ustawione. Uruchamiam skrypt..."
 
-git pull
-
-echo "Uruchamiam skrypt Python..."
 python3 easywallbox.py
