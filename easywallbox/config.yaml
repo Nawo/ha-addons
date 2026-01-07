@@ -21,14 +21,16 @@ host_dbus: true
 options:
   mqtt_host: "core-mosquitto"
   mqtt_port: 1883
-  mqtt_user: ""
+  mqtt_topic: "easywallbox"
+  mqtt_user: "mqtt_easywallbox"
   mqtt_password: ""
-  wallbox_mac: ""
+  wallbox_mac: "18:C2:93:03:DA:D5"
   wallbox_pin: "0000"
 
 schema:
   mqtt_host: str
   mqtt_port: int
+  mqtt_topic: str
   mqtt_user: str
   mqtt_password: password
   wallbox_mac: str
