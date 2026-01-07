@@ -1,5 +1,5 @@
 name: "EasyWallbox Controller"
-version: "1.0.3"
+version: "1.0.4"
 slug: "easywallbox_controller"
 description: "Integracja free2move easywallbox z Home Assistant"
 url: "https://github.com/Nawo/easywallbox"
