@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/usr/bin/env bashio
 
 echo "Uruchamianie EasyWallbox Controller (ENV Mode)..."
 
