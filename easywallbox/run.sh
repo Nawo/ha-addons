@@ -1,30 +1,33 @@
-#!/usr/bin/env bashio
+#!/bin/bash
 
-echo "Uruchamianie EasyWallbox Controller..."
+echo "--- Uruchamianie EasyWallbox Controller (Direct Mode) ---"
 
 CONFIG_PATH=/data/options.json
 
-export MQTT_HOST=$(bashio::config 'mqtt_host')
-export MQTT_PORT=$(bashio::config 'mqtt_port')
-export MQTT_USERNAME=$(bashio::config 'mqtt_user')
-export MQTT_PASSWORD=$(bashio::config 'mqtt_password')
+export MQTT_HOST=$(jq --raw-output '.mqtt_host' $CONFIG_PATH)
+export MQTT_PORT=$(jq --raw-output '.mqtt_port' $CONFIG_PATH)
+export MQTT_USERNAME=$(jq --raw-output '.mqtt_user' $CONFIG_PATH)
+export MQTT_PASSWORD=$(jq --raw-output '.mqtt_password' $CONFIG_PATH)
 
-export WALLBOX_ADDRESS=$(bashio::config 'wallbox_mac')
-export WALLBOX_PIN=$(bashio::config 'wallbox_pin')
+export WALLBOX_ADDRESS=$(jq --raw-output '.wallbox_mac' $CONFIG_PATH)
+export WALLBOX_PIN=$(jq --raw-output '.wallbox_pin' $CONFIG_PATH)
 
 export MQTT_TOPIC_PREFIX="easywallbox"
 
 echo "------------------------------------------------"
-echo "DEBUG: Sprawdzanie zmiennych środowiskowych:"
+echo "DEBUG: Wartości wyciągnięte bezpośrednio z pliku:"
 echo "MQTT Host: $MQTT_HOST"
 echo "MQTT Port: $MQTT_PORT"
 echo "MQTT User: $MQTT_USERNAME"
-echo "MQTT Pass: $MQTT_PASSWORD"
 echo "Wallbox MAC: $WALLBOX_ADDRESS"
 echo "Wallbox PIN: $WALLBOX_PIN"
-echo "Topic Prefix: $MQTT_TOPIC_PREFIX"
 echo "------------------------------------------------"
 
-echo "Zmienne ustawione. Uruchamiam skrypt..."
+if [ -z "$WALLBOX_ADDRESS" ] || [ "$WALLBOX_ADDRESS" == "null" ]; then
+    echo "BŁĄD: Nie udało się odczytać adresu MAC. Sprawdź konfigurację dodatku!"
+    exit 1
+fi
+
+echo "Uruchamiam skrypt..."
 cd /app
 python3 easywallbox.py
